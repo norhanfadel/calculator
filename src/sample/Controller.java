@@ -1,15 +1,13 @@
 package sample;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
@@ -120,13 +118,17 @@ public class Controller implements Initializable {
                     break;
                 case 4:
                     answer = 0f;
-                    try {
-                        answer = number / secondNumber;
-                    } catch (Exception exception) {
-                        text.setText("Invalid Operation");
+                    if (secondNumber == 0) {
+                        text.setText("Cant divided by Zero");
+                    } else {
+                        try {
+                            answer = number / secondNumber;
+                        } catch (Exception exception) {
+                            text.setText("Invalid Operation");
+                        }
+                        text.setText(String.valueOf(answer));
+                        break;
                     }
-                    text.setText(String.valueOf(answer));
-                    break;
             }
         }
         else if (event.getSource() == clear) {
